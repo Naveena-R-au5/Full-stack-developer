@@ -1,0 +1,62 @@
+const mongoose = require("mongoose")
+const {ObjectId} = mongoose.Schema.Types
+
+const PostSchema = new mongoose.Schema({
+    title:{
+        type:String,
+        required:true
+    },
+    description:{
+        type:String,
+        required:true
+    },
+    tskills:{
+        type:String,
+        required:true
+    },
+    lastdate:{
+        type:Date,
+        required:true
+    },
+    jminexperience:{
+        type:Number,
+        required:true
+    },
+    jmaxexperience:{
+        type:Number,
+        required:true
+    },
+    jcompany:{
+        type:String,
+        required:true
+    },
+    vacancy:{
+        type:Number,
+        required:true
+    },
+    salary:{
+        type:Number,
+        required:true
+    },
+    maxsalary:{
+        type:Number,
+        required:true
+    },
+    location:{
+        type:String,
+        required:true
+    },
+    photo:{
+        type:String,
+        default:"https://res.cloudinary.com/dpad3bwv8/image/upload/v1598255272/job_vdpfak.jpg"
+    },
+    applied:[{type:ObjectId,ref:"user"}],
+    shortlisted:[{type:ObjectId,ref:"user"}],
+    rejected:[{type:ObjectId,ref:"user"}],
+    postedBy:{
+        type:ObjectId,
+        ref:"admin"
+    }
+},{timestamps:true})
+
+mongoose.model("PostJob",PostSchema)
